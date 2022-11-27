@@ -1,18 +1,19 @@
 from flask import Flask
 from flask import request
 
+application = Flask(__name__)
 
-app = Flask(__name__)
 
-
-@app.route("/https://raytorin.github.io/for_rekruto/", methods=['GET'])
-def index():
+@application.route("/")
+def hello():
     name = request.args.get('name')
     message = request.args.get('message')
-    return f'Hello {name}! {message}!'
+    main = f'Hello {name}! {message}!'
+    return main
 
 
 if __name__ == '__main__':
-    app.run()
+    application.run(host='0.0.0.0')
+
 
 
